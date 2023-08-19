@@ -1,9 +1,12 @@
-const mdLinks = require('../');
+const mdLinks = require('../index.js');
+const path = require('path');
+
+
 
 
 describe('mdLinks', () => {
 
-  it('should...', () => {
+  it('deve extrair os links do arquivo Markdow', () => {
     console.log('FIX ME!');
   });
 
