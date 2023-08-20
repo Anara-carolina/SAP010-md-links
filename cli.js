@@ -30,14 +30,23 @@ const stats = statsOptionIndex !== -1;
 // Chama a função mdLinks com o caminho do arquivo e as opções
 mdLinks(path, { validate, stats })
   .then((links) => {
+    let totalValidated = 0;
+    let totalBroken = 0;
+
     if (validate) {
       links.forEach((link) => {
         if (link.ok) {
-          console.log(chalk.green(`✔ ${link.href} - ${link.text}`));
-        } else {
-          console.log(chalk.red(`✘ ${link.href} - ${link.text}`));
+          console.log(chalk.blue(`✔ ${link.href} - ${link.text}`));
+          totalValidated++;
+           } else {
+          console.log(chalk.red(` ${link.href} - ${link.text}`));
+          totalBroken++;
         }
       });
+
+      console.log(chalk.green(`✔ Total Validado: ${totalValidated}`));
+      console.log(chalk.red(`✘ Total quebrado: ${totalBroken}`));
+
     } else if (stats) {
       const totalLinks = links.length;
       const uniqueLinks = [...new Set(links.map((link) => link.href))].length;
@@ -47,6 +56,11 @@ mdLinks(path, { validate, stats })
       links.forEach((link) => {
         console.log(`${link.href} - ${link.text}`);
       });
+      console.log(chalk.blue(`Total: ${totalLinks}`));
+      console.log(chalk.blue(`Unique: ${uniqueLinks}`));
+
+      totalValidated = totalLinks; // Considerando todos os links como validados para fins de estatísticas
+
     }
   })
   .catch((error) => {
