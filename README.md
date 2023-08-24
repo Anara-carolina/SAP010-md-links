@@ -64,6 +64,10 @@ md-links caminho/do/arquivo.md --stats --validate
 ## 3- Tecnologias utilizadas
 <img title="tecnologias" alt="icon tec" src=https://camo.githubusercontent.com/ca63e7841c97a80231ae76c283ff37bc97d6423f7e5572260ce9720644276cf5/68747470733a2f2f736b696c6c69636f6e732e6465762f69636f6e733f693d6a732c6e6f64656a732c6a6573742c6769742c7673636f6465>  
 
-
+## 4- Desenvolvedora
+  Anara Martins <br>
+<a href = "mailto:anaramartins31@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/anara-martins-4740b0108/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+</div>
 
 
