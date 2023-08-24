@@ -41,4 +41,29 @@ npm install -g md-links-anara
 
 ### 2.2- Utilização
 
+1. Para extrair links de um arquivo Markdown:
+```sh
+md-links caminho/do/arquivo.md
+```
+2. Para extrair e verificar o status HTTP dos links:
+```sh
+md-links caminho/do/arquivo.md --validate
+
+```
+3. Para obter estatísticas sobre os links:
+```sh
+md-links caminho/do/arquivo.md --stats
+
+```
+4. Para obter estatísticas e validar os links:
+```sh
+
+md-links caminho/do/arquivo.md --stats --validate
+```
+
+## 3- Tecnologias utilizadas
+<img title="tecnologias" alt="icon tec" src=https://camo.githubusercontent.com/ca63e7841c97a80231ae76c283ff37bc97d6423f7e5572260ce9720644276cf5/68747470733a2f2f736b696c6c69636f6e732e6465762f69636f6e733f693d6a732c6e6f64656a732c6a6573742c6769742c7673636f6465>  
+
+
+
 
