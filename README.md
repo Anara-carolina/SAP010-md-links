@@ -5,8 +5,7 @@ Bem-vindo ao projeto md-links-anara! Este módulo foi  desenvolvido para analisa
 
 Para usar essa ferramenta, você pode instalá-lo globalmente usando o npm. Abra o seu terminal e execute o seguinte comando:
 
-```sh
-npm install -g md-links-anara
+
 
 
 ## Instalação
