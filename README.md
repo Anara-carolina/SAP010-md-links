@@ -36,7 +36,7 @@ Com o Markdown Links, você pode extrair, verificar e obter informações valios
 Para usar essa ferramenta, você pode instalá-lo globalmente usando o npm. Abra o seu terminal e execute o seguinte comando:
 
 ```sh
-npm install -g md-links-anara
+npm i md-links-anara
 ```
 
 ### 2.2- Utilização
