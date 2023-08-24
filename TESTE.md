@@ -18,4 +18,9 @@ node cli.js TESTE.md --validate
 node cli.js TESTE.md --stats
 
 # Verificar links, validar e exibir estatísticas
-node cli.js README.md --validate --stats
+node cli.js TESTE.md --validate --stats
+
+npm install <Anara-carolina>/md-links-anara
+
+
+
