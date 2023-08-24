@@ -9,11 +9,9 @@ const filePath = './README.md';
 // Chamando a função mdLinks com o caminho do arquivo como argumento
 mdLinks(filePath)
   .then(links => {
-    // Imprimindo os links encontrados no console
     console.log(links);
   })
   .catch(error => {
-    // Lidando com erros, caso ocorram, e imprimindo a mensagem de erro no console
     console.error('Erro:', error.message);
   });
 
