@@ -2,38 +2,41 @@ const fs = require('fs').promises;
 const axios = require('axios');
 const mdLinks = require('../index.js'); // Ajuste o caminho para o módulo mdLinks
 
-// Configurar mocks
-jest.mock('fs/promises', () => ({
-  access: jest.fn(),
-  readFile: jest.fn(),
-}));
-
-jest.mock('axios'); // Mock do módulo axios
+jest.mock('axios');  // Criando um mock para o Axios
 
 describe('mdLinks', () => {
-  it('deve extrair os links do arquivo Markdown', async () => {
-    // Configurar mock para fs.promises.readFile
-    fs.readFile.mockResolvedValue('Conteúdo do Markdown com links');
-
-    // Configurar mock para axios.head
-    axios.head.mockResolvedValue({ status: 200 }); // Simulando resposta bem-sucedida
-
-    const links = await mdLinks('path-to-markdown-file.md');
-
-    // Realizar asserções nos links aqui
+  afterEach(() => {
+    jest.clearAllMocks(); // Limpa todos os mocks entre os testes
   });
 
-  it('deve lidar com links inválidos', async () => {
-    // Configurar mock para fs.promises.readFile
-    fs.readFile.mockResolvedValue('Conteúdo do Markdown com links inválidos');
-
-    // Configurar mock para axios.head
-    axios.head.mockRejectedValue(new Error('Erro de rede')); // Simulando falha de rede
-
-    const links = await mdLinks('path-to-markdown-file.md');
-
-    // Realizar asserções nos links aqui
+  test('deveria retornar uma promise', () => {
+    const result = mdLinks('./exemplos/exemplo1.md');
+    expect(result).toBeInstanceOf(Promise);
   });
 
-  // ... Adicione mais testes conforme necessário
+  test('deveria funcionar com um arquivo Markdown válido', () => {
+    // Simulando a resposta do fs.access
+    fs.access = jest.fn().mockResolvedValue();
+    // Simulando a resposta do fs.readFile
+    fs.readFile = jest.fn().mockResolvedValue('[Google](https://www.google.com)\n');
+    // Simulando a resposta do axios.head
+    axios.head.mockResolvedValue({ status: 200 });
+
+    return mdLinks('./caminho/para/seu/arquivo.md').then(links => {
+      expect(links).toHaveLength(1);
+      expect(links[0]).toEqual({
+        href: 'https://www.google.com',
+        text: 'Google',
+        file: '/caminho/para/seu/arquivo.md',
+        ok: true
+      });
+    });
+  });
+
+  test('deveria rejeitar com erro para um arquivo que não é Markdown', () => {
+    // Simulando a resposta do fs.access para um arquivo inválido
+    fs.access = jest.fn().mockRejectedValue(new Error('Arquivo não é Markdown'));
+
+    return expect(mdLinks('./caminho/para/arquivo.txt')).rejects.toThrow('Arquivo não é Markdown');
+  });
 });
